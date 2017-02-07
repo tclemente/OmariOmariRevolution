@@ -72,6 +72,8 @@ Arrow.prototype.explode = function() {
 };
 
 
+//Score variable
+var score = 0;
 
 // For random arrows
 var randNum = 0;
@@ -131,10 +133,12 @@ function render() {
 		if (notes[i].image.position().top > 615) {
 
 			notes[i].destroy();
-
 		}
 
 	}
+
+	//Update score display
+	document.getElementById("score").innerHTML = "Score: " + score;
 
 }// ends render()
 
@@ -190,7 +194,7 @@ $(document).keydown( function(event) {
 			if (notes[i].image.position().top > 490 && notes[i].image.position().top < 530) {
 
 				console.log("LEFT! "+notes[i].explode());
-
+				score += 10;
 			}
 			
 		}
@@ -199,7 +203,7 @@ $(document).keydown( function(event) {
 			if (notes[i].image.position().top > 490 && notes[i].image.position().top < 530) {
 				
 				console.log("UP! "+notes[i].explode());
-
+				score += 10;
 			}
 
 		}
@@ -208,7 +212,7 @@ $(document).keydown( function(event) {
 			if (notes[i].image.position().top > 490 && notes[i].image.position().top < 530) {
 				
 				console.log("DOWN! "+notes[i].explode());
-
+				score += 10;
 			}
 
 		}
@@ -217,7 +221,7 @@ $(document).keydown( function(event) {
 			if (notes[i].image.position().top > 490 && notes[i].image.position().top < 530) {
 				
 				console.log("RIGHT! "+notes[i].explode());
-
+				score += 10;
 			}
 
 		}
