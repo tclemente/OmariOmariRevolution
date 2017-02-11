@@ -71,6 +71,8 @@ Arrow.prototype.explode = function() {
 
 };
 
+//Number of steps missed
+var numMissed = 0;
 
 //Score variable
 var score = 0;
@@ -131,14 +133,77 @@ function render() {
 
 		// Check for cleanup
 		if (notes[i].image.position().top > 615) {
-
+			if (numMissed < 9 && numMissed > -1) {
+				numMissed++;
+			}
 			notes[i].destroy();
+			
 		}
 
 	}
 
 	//Update score display
 	document.getElementById("score").innerHTML = "Score: " + score;
+
+	
+	//Update bar color and size
+	switch(numMissed) {
+		case 0:
+			document.getElementById("bar").className = "bar green";
+			document.getElementById("bar").style.marginTop = "1%";
+			document.getElementById("bar").style.height ="100%";
+			break;
+		case 1:
+			document.getElementById("bar").style.marginTop = "10%";
+			document.getElementById("bar").style.height ="89%";
+			break;
+		case 2:
+			document.getElementById("bar").style.marginTop = "19%";
+			document.getElementById("bar").style.height ="79%";
+			break;
+		case 3:
+			document.getElementById("bar").className = "bar green";
+			document.getElementById("bar").style.marginTop = "31%";
+			document.getElementById("bar").style.height ="65%";
+			break;		
+		case 4:
+			document.getElementById("bar").className = "bar orange";
+			document.getElementById("bar").style.marginTop = "40%";
+			document.getElementById("bar").style.height ="55%";
+			break;
+		case 5:
+			document.getElementById("bar").style.marginTop = "49%";
+			document.getElementById("bar").style.height ="45%";
+			break;
+		case 6:
+			document.getElementById("bar").className = "bar orange";
+			document.getElementById("bar").style.marginTop = "58%";
+			document.getElementById("bar").style.height ="35%";
+			break;
+		case 7:
+			document.getElementById("bar").className = "bar red";
+			document.getElementById("bar").style.marginTop = "66%";
+			document.getElementById("bar").style.height ="25%";
+			break;
+		case 8:
+			document.getElementById("bar").style.marginTop = "75%";
+			document.getElementById("bar").style.height ="15%";
+			break;
+		case 9:
+			document.getElementById("bar").style.height ="0%";
+			break;
+	}
+	/*
+	if(numMissed == 0) {
+		document.getElementById("bar").className = "bar green";
+	}
+	else if(numMissed == 4) {
+		document.getElementById("bar").className = "bar orange";
+	}
+	else if(numMissed == 8) {
+		document.getElementById("bar").className = "bar red";
+	} */
+
 
 }// ends render()
 
@@ -195,6 +260,9 @@ $(document).keydown( function(event) {
 
 				console.log("LEFT! "+notes[i].explode());
 				score += 10;
+				if(numMissed < 9 && numMissed > 0) {
+					numMissed--;
+				}
 			}
 			
 		}
@@ -204,6 +272,9 @@ $(document).keydown( function(event) {
 				
 				console.log("UP! "+notes[i].explode());
 				score += 10;
+				if(numMissed < 9 && numMissed > 0) {
+					numMissed--;
+				}
 			}
 
 		}
@@ -213,6 +284,9 @@ $(document).keydown( function(event) {
 				
 				console.log("DOWN! "+notes[i].explode());
 				score += 10;
+				if(numMissed < 9 && numMissed > 0) {
+					numMissed--;
+				}
 			}
 
 		}
@@ -222,6 +296,9 @@ $(document).keydown( function(event) {
 				
 				console.log("RIGHT! "+notes[i].explode());
 				score += 10;
+				if(numMissed < 9 && numMissed > 0) {
+					numMissed--;
+				}
 			}
 
 		}

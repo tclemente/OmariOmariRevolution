@@ -2,7 +2,6 @@
 	background-color: black;
 	height: 500px;
 	width: 500px;
-	text-align: center;
 }
 #controls {
 	padding-left: 105px;
@@ -10,7 +9,32 @@
 }
 h1{
 	color: white;
+	text-align: center;
 }
+
+#wrapper {
+    width: 100%;
+    height: 88%;
+}
+
+.bar {
+    float: right;
+    height: 100%;
+    width: 10%; /* must never add up to more than 100% */
+}
+
+.green {
+    background-color: #a8ff00;
+}
+
+.orange {
+    background-color: #ffa41c;
+}
+
+.red {
+    background-color: #ff0000;
+}
+
 /*#left {
 
 }
