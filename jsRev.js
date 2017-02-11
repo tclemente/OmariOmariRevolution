@@ -145,6 +145,15 @@ function render() {
 	//Update score display
 	document.getElementById("score").innerHTML = "Score: " + score;
 
+	//Increase speed when score increases
+	if(score > 150) 
+		arrowSpawnRate = 30;
+	if(score > 300)
+		arrowSpawnRate = 25;
+	if(score > 500)
+		arrowSpawnRate = 20;
+	if(score > 750)
+		arrowSpawnRate = 10;
 	
 	//Update bar color and size
 	switch(numMissed) {
