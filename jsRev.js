@@ -154,7 +154,7 @@ function render() {
 		arrowSpawnRate = 20;
 	if(score > 750)
 		arrowSpawnRate = 10;
-	
+
 	//Update bar color and size
 	switch(numMissed) {
 		case 0:
@@ -258,7 +258,7 @@ $(document).ready(function () {
 
 // Listening for when the key is pressed
 $(document).keydown( function(event) {
-	
+	var hit = false;
 	for (var i = 0; i < notes.length; i++) {
 	
 			console.log(notes[i].image.position().top);
@@ -272,6 +272,7 @@ $(document).keydown( function(event) {
 				if(numMissed < 9 && numMissed > 0) {
 					numMissed--;
 				}
+				hit = true;
 			}
 			
 		}
@@ -284,6 +285,7 @@ $(document).keydown( function(event) {
 				if(numMissed < 9 && numMissed > 0) {
 					numMissed--;
 				}
+				hit = true;
 			}
 
 		}
@@ -296,6 +298,7 @@ $(document).keydown( function(event) {
 				if(numMissed < 9 && numMissed > 0) {
 					numMissed--;
 				}
+				hit = true;
 			}
 
 		}
@@ -308,10 +311,15 @@ $(document).keydown( function(event) {
 				if(numMissed < 9 && numMissed > 0) {
 					numMissed--;
 				}
+				hit = true;
 			}
 
 		}
 
 	}// ends loop
-
+	
+	//None of the correct keys were hit, mark as a miss
+	if(hit == false)
+		numMissed += 1;
+	
 });// ends $(doc).keyup
