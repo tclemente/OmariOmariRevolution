@@ -1,4 +1,6 @@
-jsRevolution
+OmariOmariRevolution
 ============
 
-Introduction to game production, recreating Dance Dance Revolution with JavaScript
+Free Omari!
+
+Dance Dance Revolution with JavaScript based on [jsRevolution](https://github.com/derekahn/jsRevolution)
