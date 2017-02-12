@@ -163,16 +163,16 @@ function render() {
 		switch(numMissed) {
 			case 0:
 				document.getElementById("bar").className = "bar green";
-				document.getElementById("bar").style.marginTop = "1%";
+				document.getElementById("bar").style.marginTop = "0%";
 				document.getElementById("bar").style.height ="100%";
 				break;
 			case 1:
 				document.getElementById("bar").style.marginTop = "10%";
-				document.getElementById("bar").style.height ="89%";
+				document.getElementById("bar").style.height ="88%";
 				break;
 			case 2:
 				document.getElementById("bar").style.marginTop = "19%";
-				document.getElementById("bar").style.height ="79%";
+				document.getElementById("bar").style.height ="78%";
 				break;
 			case 3:
 				document.getElementById("bar").className = "bar green";
@@ -182,16 +182,16 @@ function render() {
 			case 4:
 				document.getElementById("bar").className = "bar orange";
 				document.getElementById("bar").style.marginTop = "40%";
-				document.getElementById("bar").style.height ="55%";
+				document.getElementById("bar").style.height ="54%";
 				break;
 			case 5:
 				document.getElementById("bar").style.marginTop = "49%";
-				document.getElementById("bar").style.height ="45%";
+				document.getElementById("bar").style.height ="44%";
 				break;
 			case 6:
 				document.getElementById("bar").className = "bar orange";
 				document.getElementById("bar").style.marginTop = "58%";
-				document.getElementById("bar").style.height ="35%";
+				document.getElementById("bar").style.height ="34%";
 				break;
 			case 7:
 				document.getElementById("bar").className = "bar red";
@@ -221,10 +221,15 @@ function render() {
 		document.getElementById("controls").style.visibility = "hidden";
 
 		//Show image
-		document.getElementById("winner").style.display = "inline";
+		document.getElementById("winner").style.display = "block";
 
 		//Hide Stage
 		document.getElementById("stage").style.visibility = "hidden";
+
+		//Update End Score
+		var endScore = score;
+		document.getElementById("endScore").innerHTML = "Score: " + score;
+		document.getElementById("endScore").style.display = "inline";
 	}
 }// ends render()
 
