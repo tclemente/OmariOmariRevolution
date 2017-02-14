@@ -10,6 +10,9 @@
 		<img src="assets/logo.png" class="image" style="display: block"/>
 		<h1 id="endScore" class="h1">Score: </h1>
 		<img id="winner" src="assets/trump.jpg" class="image" width="412px" height="512px"/>
+		<div class="img_container">
+			<img id="replayButton" src="assets/play_again.png" onclick="toggleIsPlaying(true)" class="button" />
+		</div>
 	</div>
 	<div id ="stage" class="stage">
 		<h1 id="score">Score: </h1>
@@ -23,5 +26,8 @@
 		<img id="down" src="./arrows/staticDown.png">
 		<img id="right" src="./arrows/staticRight.png">
 	</div> <!-- ENDS #CONTROLS -->
+	<audio autoplay loop>
+	  <source src="v8bitfinal.mp3" type="audio/mpeg">
+	</audio>
 </body>
 </html>

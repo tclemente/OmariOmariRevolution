@@ -1,3 +1,7 @@
+body {
+    background-image: url(assets/Nova.gif);
+    background-repeat: repeat;
+}
 .stage {
 	background-color: black;
 	height: 500px;
@@ -50,7 +54,7 @@ h1{
     display: none;
     color:black;
     margin: auto;
-    top: 12%;
+    top: 100px;
     left:0;
     right:0;
     bottom:0;
@@ -62,6 +66,16 @@ h1{
 .image {
     display: none;
     margin: 0 auto;
+}
+
+.button {
+    position:absolute;
+    display: none;
+    margin: 0 auto;
+    top: 475px;
+    left:0;
+    right:0;
+    bottom:0;
 }
 
 @font-face {

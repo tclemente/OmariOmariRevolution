@@ -124,6 +124,18 @@ function randomGen() {
 function render() {
 
 	if(isPlaying == true) {
+
+		//Hide After game elements
+		document.getElementById("winner").style.display = "none";
+		document.getElementById("replayButton").style.display = "none";
+		document.getElementById("endScore").style.display = "none";
+
+		//Show controls
+		document.getElementById("controls").style.visibility = "visible";
+
+		//Show Stage
+		document.getElementById("stage").style.visibility = "visible";
+
 		if (frame++ % arrowSpawnRate === 0) {
 
 			randomGen();
@@ -220,20 +232,23 @@ function render() {
 		//Hide controls
 		document.getElementById("controls").style.visibility = "hidden";
 
-		//Show image
-		document.getElementById("winner").style.display = "block";
-
 		//Hide Stage
 		document.getElementById("stage").style.visibility = "hidden";
 
-		//Update End Score
+		//Show After Game
 		var endScore = score;
+		document.getElementById("winner").style.display = "block";
+		document.getElementById("replayButton").style.display = "inline";
 		document.getElementById("endScore").innerHTML = "Score: " + score;
 		document.getElementById("endScore").style.display = "inline";
 	}
 }// ends render()
 
-
+function toggleIsPlaying(choice) {
+	isPlaying = choice;
+	numMissed = 0;
+	score = 0;
+}
 
 // jQuery to animate arrows //
 $(document).ready(function () {
