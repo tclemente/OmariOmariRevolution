@@ -11,8 +11,13 @@
 		<h1 id="endScore" class="h1">Score: </h1>
 		<img id="winner" src="assets/trump.jpg" class="image" width="412px" height="512px"/>
 		<div class="img_container">
-			<img id="replayButton" src="assets/play_again.png" onclick="toggleIsPlaying(true)" class="button" />
+			<img id="replayButton" src="assets/play_again.png" onclick="setGameState(1)" class="button" />
 		</div>
+	</div>
+	<div class="img_container">
+		<img id="playButton" src="assets/play.png" class="image" style="display: block; margin: 20 auto" onclick="setGameState(1)"/>
+		<img id="aboutButton" src="assets/about.png" class="image"style="display: block; margin: 20 auto"/>
+		<img id="hiScoresButton" src="assets/hi_scores.png" class="image"style="display: block; margin: 20 auto"/>
 	</div>
 	<div id ="stage" class="stage">
 		<h1 id="score">Score: </h1>

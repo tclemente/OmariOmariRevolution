@@ -57,6 +57,7 @@ Arrow.prototype.step = function() {
 Arrow.prototype.destroy = function() {
 
 	// removes the image of the DOM
+
 	this.image.remove();
 
 	// Removes the note/arrow from memory/array
@@ -77,6 +78,9 @@ var numMissed = 0;
 //Score variable
 var score = 0;
 
+//End score variable
+var endScore = 0;
+
 // For random arrows
 var randNum = 0;
 
@@ -86,8 +90,8 @@ var frame = 0;
 // Determines the speed of notes
 var arrowSpawnRate = 40;
 
-// Game state
-var isPlaying = true;
+// Game state. 0 = Menu, 1 = Playing, 2 = After game, 3 = Hi Scores
+var gameState = 0;
 
 
 // Random generator for arrows
@@ -123,19 +127,6 @@ function randomGen() {
 // Render function //
 function render() {
 
-	if(isPlaying == true) {
-
-		//Hide After game elements
-		document.getElementById("winner").style.display = "none";
-		document.getElementById("replayButton").style.display = "none";
-		document.getElementById("endScore").style.display = "none";
-
-		//Show controls
-		document.getElementById("controls").style.visibility = "visible";
-
-		//Show Stage
-		document.getElementById("stage").style.visibility = "visible";
-
 		if (frame++ % arrowSpawnRate === 0) {
 
 			randomGen();
@@ -162,6 +153,8 @@ function render() {
 		document.getElementById("score").innerHTML = "Score: " + score;
 
 		//Increase speed when score increases
+		if(score == 0)
+			arrowSpawnRate = 40;
 		if(score > 150) 
 			arrowSpawnRate = 30;
 		if(score > 300)
@@ -216,38 +209,14 @@ function render() {
 				break;
 			case 9:
 				document.getElementById("bar").style.height ="0%";
-				isPlaying = false;
+				gameState = 2;
 				break;
 		}
-	}
-	//End game logic
-	else {
-		// Destroy all active notes //
-		for (var i = notes.length - 1; i >= 0; i--) {
-			notes[i].step();
-			if (notes[i].image.position().top > 615)
-				notes[i].destroy();
-		}
-
-		//Hide controls
-		document.getElementById("controls").style.visibility = "hidden";
-
-		//Hide Stage
-		document.getElementById("stage").style.visibility = "hidden";
-
-		//Show After Game
-		var endScore = score;
-		document.getElementById("winner").style.display = "block";
-		document.getElementById("replayButton").style.display = "inline";
-		document.getElementById("endScore").innerHTML = "Score: " + score;
-		document.getElementById("endScore").style.display = "inline";
-	}
 }// ends render()
 
-function toggleIsPlaying(choice) {
-	isPlaying = choice;
-	numMissed = 0;
-	score = 0;
+//Set gameState
+function setGameState(state) {
+	gameState = state;
 }
 
 // jQuery to animate arrows //
@@ -279,7 +248,65 @@ $(document).ready(function () {
 
 		requestAnimFrame(animloop);
 
-		render();
+		if(gameState == 0){
+			//Show Menu
+
+			//Hide controls
+			document.getElementById("controls").style.visibility = "hidden";
+
+			//Hide Stage
+			document.getElementById("stage").style.visibility = "hidden";
+		}
+		else if (gameState == 1){
+			//Playing
+
+			//Hide pre-game elements
+			document.getElementById("playButton").style.display = "none";
+			document.getElementById("aboutButton").style.display = "none";
+			document.getElementById("hiScoresButton").style.display = "none";
+
+			//Hide After game elements
+			document.getElementById("winner").style.display = "none";
+			document.getElementById("replayButton").style.display = "none";
+			document.getElementById("endScore").style.display = "none";
+
+			//Show controls
+			document.getElementById("controls").style.visibility = "visible";
+
+			//Show Stage
+			document.getElementById("stage").style.visibility = "visible";
+
+			render();
+
+			endScore = score;
+		}
+
+		else if (gameState == 2){
+			//After game
+
+			// Destroy all active notes //
+			for (var i = notes.length - 1; i >= 0; i--) {
+				//notes[i].destroy();
+				if (notes[i].image.position().top < 615) {
+					notes[i].image.css("top", "-=500px"); 
+				}
+			}
+		
+			//Hide controls
+			document.getElementById("controls").style.visibility = "hidden";
+
+			//Hide Stage
+			document.getElementById("stage").style.visibility = "hidden";
+
+			//Show After Game
+			document.getElementById("winner").style.display = "block";
+			document.getElementById("replayButton").style.display = "inline";
+			document.getElementById("endScore").innerHTML = "Score: " + endScore;
+			document.getElementById("endScore").style.display = "inline";
+
+			score = 0;
+			numMissed = 0;
+		}
 
 	})();// ends (function animloop() )
 
