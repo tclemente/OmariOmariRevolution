@@ -276,6 +276,9 @@ $(document).ready(function () {
 			//Show Stage
 			document.getElementById("stage").style.visibility = "visible";
 
+			//Play music
+			document.getElementById("song").play();
+
 			render();
 
 			endScore = score;
