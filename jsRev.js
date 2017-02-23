@@ -250,6 +250,18 @@ $(document).ready(function () {
 
 		if(gameState == 0){
 			//Show Menu
+			document.getElementById("playButton").style.display = "block";
+			document.getElementById("aboutButton").style.display = "block";
+			document.getElementById("hiScoresButton").style.display = "block";
+
+			//Hide After game elements
+			document.getElementById("winner").style.display = "none";
+			document.getElementById("replayButton").style.display = "none";
+			document.getElementById("endScore").style.display = "none";
+			document.getElementById("submitScore").style.display = "none";
+			document.getElementById("submitButton").style.display = "none";
+			document.getElementById("input").style.display = "none";
+			document.getElementById("homeButton").style.display = "none";	
 
 			//Hide controls
 			document.getElementById("controls").style.visibility = "hidden";
@@ -269,6 +281,10 @@ $(document).ready(function () {
 			document.getElementById("winner").style.display = "none";
 			document.getElementById("replayButton").style.display = "none";
 			document.getElementById("endScore").style.display = "none";
+			document.getElementById("submitScore").style.display = "none";
+			document.getElementById("submitButton").style.display = "none";
+			document.getElementById("input").style.display = "none";
+			document.getElementById("homeButton").style.display = "none";	
 
 			//Show controls
 			document.getElementById("controls").style.visibility = "visible";
@@ -302,10 +318,20 @@ $(document).ready(function () {
 			document.getElementById("stage").style.visibility = "hidden";
 
 			//Show After Game
+
+			var input = document.getElementById('input');
+			input.focus();
+			if(document.getElementById("input").style.display == "none")
+				input.select();
+			
 			document.getElementById("winner").style.display = "block";
 			document.getElementById("replayButton").style.display = "inline";
 			document.getElementById("endScore").innerHTML = "Score: " + endScore;
 			document.getElementById("endScore").style.display = "inline";
+			document.getElementById("submitScore").style.display = "inline";
+			document.getElementById("submitButton").style.display = "inline";
+			document.getElementById("input").style.display = "inline";	
+			document.getElementById("homeButton").style.display = "inline";
 
 			score = 0;
 			numMissed = 0;

@@ -63,6 +63,40 @@ h1{
     font-size: 60px;
 }
 
+.textBox {
+    top: 520px; 
+    display: none;
+    background-image: url(assets/text_box.png); 
+    background-position: 50%; 
+    text-align: center; 
+    background-size: 200px; 
+    background-repeat: no-repeat;
+    border: none;
+    background-color: transparent; 
+    width: 200px; 
+    height: 100px;  
+    margin: 0 auto; 
+    left:0;
+    right:0;
+    bottom:0;
+    position:absolute; 
+    font-family: NES; 
+    font-size:30px
+}
+
+.submit {
+    position:absolute;
+    display: none;
+    color:white;
+    top: 475px;
+    left:0;
+    right:0;
+    bottom:0;
+    text-align: center;
+    font-family: NES;
+    font-size: 40px;
+}
+
 .image {
     display: none;
     margin: 0 auto;
@@ -72,10 +106,14 @@ h1{
     position:absolute;
     display: none;
     margin: 0 auto;
-    top: 475px;
+    top: 610px;
     left:0;
     right:0;
     bottom:0;
+}
+
+input:focus{
+    outline: none;
 }
 
 @font-face {
