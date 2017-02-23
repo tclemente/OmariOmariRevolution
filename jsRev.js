@@ -263,11 +263,19 @@ $(document).ready(function () {
 			document.getElementById("input").style.display = "none";
 			document.getElementById("homeButton").style.display = "none";	
 
+			//Hide About
+			document.getElementById("about").style.visibility = "hidden";
+			document.getElementById("about").style.display = "none";	
+			document.getElementById("aboutBackButton").style.display = "none";
+
 			//Hide controls
 			document.getElementById("controls").style.visibility = "hidden";
 
 			//Hide Stage
 			document.getElementById("stage").style.visibility = "hidden";
+
+			//Hide About
+			document.getElementById("about").style.visibility = "hidden";
 		}
 		else if (gameState == 1){
 			//Playing
@@ -335,6 +343,19 @@ $(document).ready(function () {
 
 			score = 0;
 			numMissed = 0;
+		}
+
+		else if (gameState == 3){
+			//About
+			document.getElementById("about").style.visibility = "visible";
+			document.getElementById("about").style.display = "block";
+			document.getElementById("aboutBackButton").style.display = "inline";
+
+			//Hide pre-game elements
+			document.getElementById("playButton").style.display = "none";
+			document.getElementById("aboutButton").style.display = "none";
+			document.getElementById("hiScoresButton").style.display = "none";
+
 		}
 
 	})();// ends (function animloop() )

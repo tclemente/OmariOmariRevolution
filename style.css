@@ -112,6 +112,21 @@ h1{
     bottom:0;
 }
 
+.about {
+    width:500px; 
+    height:500px;
+    line-height:1.5em;
+    overflow:auto;
+    padding:5px;
+    font-size: 60px; 
+    color: white; 
+    text-align: center; 
+    font-family: pixel; 
+    background-color:rgba(0, 0, 0, 0.4); 
+    margin: 0 auto;
+    display: block;
+}
+
 input:focus{
     outline: none;
 }
@@ -119,6 +134,11 @@ input:focus{
 @font-face {
     font-family: NES;
     src: url(assets/NES.ttf);
+}
+
+@font-face {
+    font-family: pixel;
+    src: url(assets/Pixel.ttf);
 }
 
 

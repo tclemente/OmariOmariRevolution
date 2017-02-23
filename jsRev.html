@@ -17,12 +17,25 @@
 			<img id="replayButton" src="assets/play_again.png" onclick="setGameState(1)" class="button" style="top: 670px"/>
 			<img id="homeButton" src="assets/home.png" onclick="setGameState(0)" class="button" style="top: 730px"/>
 		</div>
-	</div>
+	</div> <!-- ENDS POST GAME -->
 	<div class="img_container">
-		<img id="playButton" src="assets/play.png" class="image" style="display: block; margin: 20 auto" onclick="setGameState(1)"/>
-		<img id="aboutButton" src="assets/about.png" class="image" style="display: block; margin: 20 auto"/>
+		<img id="playButton" src="assets/play.png" class="image" style="display: block; margin: 20 auto; " onclick="setGameState(1)"/>
+		<img id="aboutButton" src="assets/about.png" class="image" style="display: block; margin: 20 auto" onclick="setGameState(3)"/>
 		<img id="hiScoresButton" src="assets/hi_scores.png" class="image" style="display: block; margin: 20 auto"/>
+	</div> <!-- ENDS PRE GAME -->
+	<div id="about" class="about">
+	ABOUT <br/>
+	Created by: <br/>
+	Tom Clemente '17 <br/>
+	TH BINN <br/>
+	<br/>
+	Credits:<br/>
+	Ryan Bowman<br/>
+	Julia Vanzelli<br/>
+	The Villanova Band
 	</div>
+	<img id="aboutBackButton" src="assets/back.png" class="button" style="top: 620px;" onclick="setGameState(0)"/>
+
 	<div id ="stage" class="stage">
 		<h1 id="score">Score: </h1>
 		<div id="wrapper">
