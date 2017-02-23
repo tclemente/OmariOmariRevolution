@@ -1,6 +1,7 @@
 body {
     background-image: url(assets/Nova.gif);
     background-repeat: repeat;
+    background-position: left top; 
 }
 .stage {
 	background-color: black;
