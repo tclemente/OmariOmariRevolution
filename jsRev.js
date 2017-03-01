@@ -17,22 +17,22 @@ function Arrow(direction) {
 
 	switch(direction) {
 
-		case "left" : xPos = "115px";
+		case "left" : xPos = "88px";
 		break;
 
-		case "up" : xPos = "182";
+		case "up" : xPos = "158px";
 		break;
 
-		case "down" : xPos = "252px";
+		case "down" : xPos = "227px";
 		break;
 
-		case "right" : xPos = "322px";
+		case "right" : xPos = "298px";
 		break;
 
 	}
 
 	this.direction = direction;
-	this.image = $("<img src='./arrows/" + direction + ".gif'/>");
+	this.image = jQuery("<img src='/tomsDir/arrows/" + direction + ".gif'/>");
 	this.image.css({
 
 		position: "absolute",
@@ -41,7 +41,7 @@ function Arrow(direction) {
 
 	});
 
-	$('.stage').append(this.image);
+	jQuery('.stage').append(this.image);
 
 }// ends CLASS Arrow
 
@@ -92,6 +92,9 @@ var arrowSpawnRate = 40;
 
 // Game state. 0 = Menu, 1 = Playing, 2 = After game, 3 = Hi Scores
 var gameState = 0;
+
+// User's name for high score
+var userName;
 
 
 // Random generator for arrows
@@ -220,7 +223,7 @@ function setGameState(state) {
 }
 
 // jQuery to animate arrows //
-$(document).ready(function () {
+jQuery(document).ready(function ($) {
 
 	// shim layer with setTimeout fallback
 	window.requestAnimFrame = (function() {
@@ -250,9 +253,16 @@ $(document).ready(function () {
 
 		if(gameState == 0){
 			//Show Menu
+			document.getElementById("newsHeader").style.display = "block";
 			document.getElementById("playButton").style.display = "block";
 			document.getElementById("aboutButton").style.display = "block";
 			document.getElementById("hiScoresButton").style.display = "block";
+
+			document.getElementById("omariLeft").style.marginLeft = "20px";
+			document.getElementById("omariRight").style.marginRight = "20px";
+
+			document.getElementById("omariLeft").style.height = "450px";
+			document.getElementById("omariRight").style.height = "450px";
 
 			//Hide After game elements
 			document.getElementById("winner").style.display = "none";
@@ -260,7 +270,7 @@ $(document).ready(function () {
 			document.getElementById("endScore").style.display = "none";
 			document.getElementById("submitScore").style.display = "none";
 			document.getElementById("submitButton").style.display = "none";
-			document.getElementById("input").style.display = "none";
+			document.getElementById("myinput").style.display = "none";
 			document.getElementById("homeButton").style.display = "none";	
 
 			//Hide About
@@ -276,11 +286,15 @@ $(document).ready(function () {
 
 			//Hide About
 			document.getElementById("about").style.visibility = "hidden";
+
+			//Hide table
+			document.getElementById("sheet").style.display = "none";
 		}
 		else if (gameState == 1){
 			//Playing
 
 			//Hide pre-game elements
+			document.getElementById("newsHeader").style.display = "none";
 			document.getElementById("playButton").style.display = "none";
 			document.getElementById("aboutButton").style.display = "none";
 			document.getElementById("hiScoresButton").style.display = "none";
@@ -291,7 +305,7 @@ $(document).ready(function () {
 			document.getElementById("endScore").style.display = "none";
 			document.getElementById("submitScore").style.display = "none";
 			document.getElementById("submitButton").style.display = "none";
-			document.getElementById("input").style.display = "none";
+			document.getElementById("myinput").style.display = "none";
 			document.getElementById("homeButton").style.display = "none";	
 
 			//Show controls
@@ -313,10 +327,11 @@ $(document).ready(function () {
 
 			// Destroy all active notes //
 			for (var i = notes.length - 1; i >= 0; i--) {
-				//notes[i].destroy();
+				
 				if (notes[i].image.position().top < 615) {
-					notes[i].image.css("top", "-=500px"); 
+					notes[i].image.css("top", "=-1500px"); 
 				}
+				//notes[i].destroy();
 			}
 		
 			//Hide controls
@@ -327,10 +342,10 @@ $(document).ready(function () {
 
 			//Show After Game
 
-			var input = document.getElementById('input');
-			input.focus();
-			if(document.getElementById("input").style.display == "none")
-				input.select();
+			var myinput = document.getElementById('myinput');
+			myinput.focus();
+			if(document.getElementById("myinput").style.display == "none")
+				myinput.select();
 			
 			document.getElementById("winner").style.display = "block";
 			document.getElementById("replayButton").style.display = "inline";
@@ -338,7 +353,7 @@ $(document).ready(function () {
 			document.getElementById("endScore").style.display = "inline";
 			document.getElementById("submitScore").style.display = "inline";
 			document.getElementById("submitButton").style.display = "inline";
-			document.getElementById("input").style.display = "inline";	
+			document.getElementById("myinput").style.display = "inline";	
 			document.getElementById("homeButton").style.display = "inline";
 
 			score = 0;
@@ -352,10 +367,47 @@ $(document).ready(function () {
 			document.getElementById("aboutBackButton").style.display = "inline";
 
 			//Hide pre-game elements
+			document.getElementById("newsHeader").style.display = "none";
 			document.getElementById("playButton").style.display = "none";
 			document.getElementById("aboutButton").style.display = "none";
 			document.getElementById("hiScoresButton").style.display = "none";
 
+			userName = document.getElementById("myinput").value;
+		}
+		else if (gameState == 4){
+			//Hi Scores
+
+			//Hide After game elements
+			document.getElementById("winner").style.display = "none";
+			document.getElementById("replayButton").style.display = "none";
+			document.getElementById("endScore").style.display = "none";
+			document.getElementById("submitScore").style.display = "none";
+			document.getElementById("submitButton").style.display = "none";
+			document.getElementById("myinput").style.display = "none";
+			document.getElementById("homeButton").style.display = "none";
+
+			//Hide pre-game elements
+			document.getElementById("newsHeader").style.display = "none";
+			document.getElementById("playButton").style.display = "none";
+			document.getElementById("aboutButton").style.display = "none";
+			document.getElementById("hiScoresButton").style.display = "none";
+
+
+			//Hide controls
+			document.getElementById("controls").style.visibility = "hidden";
+
+			//Hide Stage
+			document.getElementById("stage").style.visibility = "hidden";
+
+			//Show table
+			document.getElementById("sheet").style.display = "inline";
+
+			document.getElementById("aboutBackButton").style.display = "inline";
+
+			document.getElementById("omariLeft").style.marginLeft = "8px";
+			document.getElementById("omariRight").style.marginRight = "8px";
+			document.getElementById("omariLeft").style.height = "400px";
+			document.getElementById("omariRight").style.height = "400px";
 		}
 
 	})();// ends (function animloop() )
@@ -363,10 +415,32 @@ $(document).ready(function () {
 
 });// ends $(doc).ready
 
+function omari_score() {
+	if(document.getElementById("myinput").value.length != 0) {
+		jQuery.ajax({
+				type:	"POST",
+				dataType: "json",
+				url:	"../wp-admin/admin-ajax.php",
+				data:	{
+					"action":	"omari",
+					"username":	document.getElementById("myinput").value,
+					"score":	endScore
+				},
+				success: function(data) {
+					if (data == "true") { // success
+						// wait for attendees table refresh to knock it out
+						console.log("Success: " + data);
+					} else { // an error occurred
+					}
+				}
+			});
+		setGameState(4);
+	}
+}
 
 
 // Listening for when the key is pressed
-$(document).keydown( function(event) {
+jQuery(document).keydown( function(event) {
 	var hit = false;
 	for (var i = 0; i < notes.length; i++) {
 	
